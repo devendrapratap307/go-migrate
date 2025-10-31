@@ -143,13 +143,6 @@ func main() {
 | `migrate -path db/migrations -database "$DB_DSN" down` | Roll back migrations |
 | `migrate force VERSION` | Force version in case of failed migration |
 
----
-
-## Run Everything
-```bash
-make migrate-up
-make run
-```
 
 ---
 
@@ -196,6 +189,14 @@ migrate -path db/migrations -database "postgres://user:password@localhost:5432/y
 make migrate-up
 ```
 
+---
+
+## Run Everything
+```bash
+make migrate-up
+make run
+```
+---
 
 ## 🧹 Cleanup
 ```bash
