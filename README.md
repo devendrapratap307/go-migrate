@@ -150,6 +150,49 @@ func main() {
 make migrate-up
 make run
 ```
+## Step 1 :Create a new migration
+### Run this command in your project directory (same place as go.mod):
+```bash
+migrate create -ext sql -dir db/migrations add_quantity_to_products
+```
+### or
+
+```bash
+make migrate-new name=add_quantity_to_products
+```
+### This will generate two files like:
+```bash
+db/migrations/
+├── 0001_create_products_table.up.sql
+├── 0001_create_products_table.down.sql
+├── 0002_add_quantity_to_products.up.sql
+├── 0002_add_quantity_to_products.down.sql
+
+```
+
+## Step 2: Write SQL inside migration files
+### ✅ 0002_add_quantity_to_products.up.sql
+```bash
+ALTER TABLE products
+ADD COLUMN quantity INT DEFAULT 0;
+```
+
+### 🔁 0002_add_quantity_to_products.down.sql
+```bash
+ALTER TABLE products
+DROP COLUMN IF EXISTS quantity;
+```
+## Step 3: Run migration
+### Then,
+### Now apply the migration:
+```bash
+migrate -path db/migrations -database "postgres://user:password@localhost:5432/your_db?sslmode=disable" up
+```
+### Or by Makefile,
+```bash
+make migrate-up
+```
+
 
 ## 🧹 Cleanup
 ```bash
