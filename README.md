@@ -150,6 +150,9 @@ func main() {
 make migrate-up
 make run
 ```
+
+---
+
 ## Step 1 :Create a new migration
 ### Run this command in your project directory (same place as go.mod):
 ```bash
