@@ -145,6 +145,12 @@ func main() {
 
 ---
 
+## Run Everything
+```bash
+make migrate-up
+make run
+```
+
 ## 🧹 Cleanup
 ```bash
 docker stop pg-migrate && docker rm pg-migrate
